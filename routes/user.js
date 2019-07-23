@@ -8,6 +8,11 @@ module.exports = (app) => {
         res.render('user/signup', {title: 'Signup || RateMe'});
     });
 
+    app.post('/signup', passport.authenticate('local.signup', {
+        successRedirect: '/',
+        failureRedirect: '/signup',
+        failureFlash: true
+    }));
     app.get('/login', (req, res) => {
         res.render('user/login', {title: 'Login || RateMe'});
     });
