@@ -30,7 +30,11 @@ module.exports = (app, passport) => {
 
     app.get('/home', (req, res) => {
         res.render('home', {title: 'Home || RateMe'});
-    })
+    });
+
+    app.get('/forgot', (req, res) => {
+        res.render('user/forgot', {title: 'Request Password Reset'});
+    });
 }
 
 function validate(req, res, next){

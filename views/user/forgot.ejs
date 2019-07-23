@@ -1,0 +1,42 @@
+<% layout('layout') %>
+
+<section>
+    <div class="container">
+     
+        <form method="POST" action="/login">
+            <div class="row justify-content-center pt-5">
+                <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                    <div class="row">
+                        <div class="col text-center">
+                        <h1>Reset you password</h1>
+                        <p class="text-h3">Enter your email and a password reset link will be sent. </p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mt-4">
+                        <div class="col">
+                            <input id="email" type="email" class="form-control" name="email" autocomplete="on" placeholder="Email">
+                        </div>
+                    </div>
+                    
+                    <div class="row justify-content-start mt-4">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="submit" id="submit" value="Send" class="btn btn-primary mt-4  btn-block" name="submit">
+                            </div>
+                        
+                        </div>
+                    </div>
+                    
+                    <div class="row justify-content-start mt-4">
+                        <div class="col">
+                            <label class="form-check-label">
+                            Already reset password? <a href="/login">Login here.</a>
+                            </label>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+  </section>
