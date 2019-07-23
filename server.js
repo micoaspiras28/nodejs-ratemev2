@@ -6,11 +6,14 @@ var engine = require('ejs-mate');
 var session = require('express-session');
 var mongoose = require('mongoose');
 var MongoStore = require('connect-mongodb-session')(session);
-
+var passport = require('passport');
+var flash = require('connect-flash');
 
 var app = express();
 
 mongoose.connect('mongodb://localhost/rateme');
+
+require('./config/passport');
 
 app.use(express.static('public'));
 app.engine('ejs', engine);
@@ -26,9 +29,10 @@ app.use(session({
   store: new MongoStore({mongooseConnection: mongoose.connection})
 }));
 
-// app.get('/', function(req, res, next){
-//   res.render('index');
-// })
+app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 require('./routes/user')(app);
 
