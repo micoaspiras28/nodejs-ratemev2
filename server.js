@@ -5,13 +5,14 @@ var ejs = require('ejs');
 var engine = require('ejs-mate');
 var session = require('express-session');
 var mongoose = require('mongoose');
-var MongoStore = require('connect-mongodb-session')(session);
+var MongoStore = require('connect-mongo')(session);
 var passport = require('passport');
 var flash = require('connect-flash');
 
+
 var app = express();
 
-mongoose.connect('mongodb://localhost/rateme');
+mongoose.connect('mongodb://localhost:27017/rateme', {useNewUrlParser: true});
 
 require('./config/passport');
 
@@ -34,7 +35,8 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('./routes/user')(app);
+
+require('./routes/user')(app, passport);
 
 app.listen(3000, function(){
   console.log('It is fucking running on port 3000');

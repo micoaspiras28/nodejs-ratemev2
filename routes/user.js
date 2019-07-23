@@ -1,4 +1,5 @@
-module.exports = (app) => {
+
+module.exports = (app, passport) => {
 
     app.get('/', (req, res, next) => {
            res.render('index', {title: 'Index || RateMe'});
@@ -9,11 +10,12 @@ module.exports = (app) => {
     });
 
     app.post('/signup', passport.authenticate('local.signup', {
-        successRedirect: '/',
+        successRedirect: '/index',
         failureRedirect: '/signup',
         failureFlash: true
     }));
+    
     app.get('/login', (req, res) => {
         res.render('user/login', {title: 'Login || RateMe'});
-    });
+    })
 }
