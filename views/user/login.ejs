@@ -1,0 +1,46 @@
+<% layout('layout') %>
+
+<section>
+    <div class="container">
+        <form action="POST" class="" id="loginForm" action="/login">
+            <div class="row justify-content-center pt-5">
+                <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                    <div class="row">
+                        <div class="col text-center">
+                        <h1>Login</h1>
+                        <p class="text-h3">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia. </p>
+                        </div>
+                    </div>
+                    <div class="row align-items-center mt-4">
+                        <div class="col">
+                        <input type="email" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="row align-items-center mt-4">
+                        <div class="col">
+                        <input type="password" class="form-control" placeholder="Password">
+                        </div>
+                        <div class="col">
+                        <input type="password" class="form-control" placeholder="Confirm Password">
+                        </div>
+                    </div>
+                    <div class="row justify-content-start mt-4">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="submit" id="login" value="Login" class="btn btn-primary mt-4  btn-block" name="login">
+                            </div>
+                        
+                        </div>
+                    </div>
+                    <div class="row justify-content-start mt-4">
+                        <div class="col">
+                            <label class="form-check-label">
+                            Do not have an account? <a href="/signup">Register here.</a>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+  </section>
