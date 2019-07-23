@@ -8,7 +8,7 @@ module.exports = (app, passport) => {
     app.get('/signup', (req, res) => {
         var errors = req.flash('error'); //to get the error message
         console.log(errors);
-        res.render('user/signup', {title: 'Signup || RateMe', messages: errors, hasErros: errors.Lenght > 0});
+        res.render('user/signup', {title: 'Signup || RateMe', messages: errors, hasErrors: errors.Length > 0});
     });
 
     app.post('/signup', validate, passport.authenticate('local.signup', {

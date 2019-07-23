@@ -2,7 +2,20 @@
 
 <section>
     <div class="container">
+
+      
+
         <form method="POST" class="" id="signupForm" action="/signup">
+            <% if(hasErrors) {%>
+                <% for(var i=0; i < messages.length; i++) {%>
+                    <div class="alert alert-danger">
+                        <a href="" class="close" data-dismiss="alert" aria-label="close">
+                            &time;
+                        </a>  
+                    </div>
+                    <%= messages[i] =%>
+                <% } %>
+            <% } %>
             <div class="row justify-content-center pt-5">
                 <div class="col-12 col-md-8 col-lg-8 col-xl-6">
                     <div class="row">
