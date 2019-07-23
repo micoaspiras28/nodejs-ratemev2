@@ -2,6 +2,16 @@
 
 <section>
     <div class="container">
+      <% if(hasErrors){%>
+                <% for(var i = 0; i < messages.length; i++) {%>
+                    <div class="alert alert-danger">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                            x
+                        </a>  
+                    <%= messages[i] %>
+                    </div>
+                <% } %>
+            <% } %>
         <form method="POST" action="/login">
             <div class="row justify-content-center pt-5">
                 <div class="col-12 col-md-8 col-lg-8 col-xl-6">
@@ -13,16 +23,14 @@
                     </div>
                     <div class="row align-items-center mt-4">
                         <div class="col">
-                        <input type="email" class="form-control" placeholder="Email">
+                            <input id="email" type="email" class="form-control" name="email" autocomplete="on" placeholder="Email">
                         </div>
                     </div>
                     <div class="row align-items-center mt-4">
                         <div class="col">
-                        <input type="password" class="form-control" placeholder="Password">
+                            <input id="password" type="password" class="form-control" name="password" autocomplete="on" placeholder="Password">
                         </div>
-                        <div class="col">
-                        <input type="password" class="form-control" placeholder="Confirm Password">
-                        </div>
+                        
                     </div>
                     <div class="row justify-content-start mt-4">
                         <div class="col">
