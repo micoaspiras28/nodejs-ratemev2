@@ -8,7 +8,7 @@ module.exports = (app, passport) => {
     app.get('/signup', (req, res) => {
         var errors = req.flash('error'); //to get the error message
         console.log(errors);
-        res.render('user/signup', {title: 'Signup || RateMe', messages: errors, hasErrors: errors.Length > 0});
+        res.render('user/signup', {title: 'Signup || RateMe', messages: errors, hasErrors: errors.length > 0});
     });
 
     app.post('/signup', validate, passport.authenticate('local.signup', {
@@ -24,12 +24,12 @@ module.exports = (app, passport) => {
 
 function validate(req, res, next){
     req.checkBody('fullname', 'Fullname is Required').notEmpty();
-    req.checkBody('fullname', 'Fullname Must Not Be Less Thank 5').isLength({min:5});
+    req.checkBody('fullname', 'Fullname Must Not Be Less Than 5').isLength({min:5});
     req.checkBody('email', 'Email is Required').notEmpty();
     req.checkBody('email', 'Email is Invalid').isEmail();
     req.checkBody('password', 'Password is Required').notEmpty();
-    req.checkBody('password', 'Password Must Not Be Less Thank 5').isLength({min:5});
-    req.check("password", "Password Must Contain at least 1 Number").matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i");
+    req.checkBody('password', 'Password Must Not Be Less Than 5').isLength({min:5});
+    // req.check('password', 'Password Must Contain at least 1 Number.').matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{5,}$/, "i");
     
     var errors = req.validationErrors();
 
