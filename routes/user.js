@@ -5,6 +5,8 @@ var async = require('async');
 
 var crypto = require('crypto');
 var User = require('../models/user');
+var secret = require('../secret/secret');
+
 module.exports = (app, passport) => {
 
     app.get('/', (req, res, next) => {
@@ -14,7 +16,8 @@ module.exports = (app, passport) => {
     app.get('/signup', (req, res) => {
         var errors = req.flash('error'); //to get the error message
         console.log(errors);
-        res.render('user/signup', {title: 'Signup || RateMe', messages: errors, hasErrors: errors.length > 0});
+        res.render('user/signup', {title: 'Signup || RateMe', messages: errors, 
+        hasErrors: errors.length > 0});
     });
 
     app.post('/signup', validate, passport.authenticate('local.signup', {
@@ -25,7 +28,8 @@ module.exports = (app, passport) => {
     
     app.get('/login', (req, res) => {
         var errors = req.flash('error'); //to get the error message
-        res.render('user/login', {title: 'Login || RateMe', messages: errors, hasErrors: errors.length > 0});
+        res.render('user/login', {title: 'Login || RateMe', messages: errors, 
+        hasErrors: errors.length > 0});
     });
 
     app.post('/login', loginValidation, passport.authenticate('local.login', {
@@ -39,9 +43,12 @@ module.exports = (app, passport) => {
     });
 
     app.get('/forgot', (req, res) => {
-        res.render('user/forgot', {title: 'Request Password Reset'});
+        var errors = req.flash('error'); //to get the error message
+        var info = req.flash('info');
+        res.render('user/forgot', {title: 'Request Password Reset', messages: errors, 
+        hasErrors: errors.length > 0, info: info, noErrors: info.length > 0 });
     });
-
+    //Creating token for reset password
     app.post('/forgot', (req, res, next) =>{
         async.waterfall([
             function(callback){
@@ -50,14 +57,14 @@ module.exports = (app, passport) => {
                     callback(err, rand);
                 });
             },
-
+            // Validate user email if it is exist 
             function(rand, callback){
                 User.findOne({'email':req.body.email}, (err, user) => {
                     if(!user){
                         req.flash('error', 'No account exist or email is invalid');
                         return res.redirect('/forgot');
                     }
-
+                    // Set random token 
                     user.passwordResetToken = rand;
                     user.passwordResetExpires = Date.now() + 60*60*1000;
 
@@ -66,11 +73,41 @@ module.exports = (app, passport) => {
                     });
                 })
             },
+            //sending token to users email
             function(rand, user, callback){
+                var smtpTransport = nodemailer.createTransport({
+                    service: 'gmail', 
+                    host: 'smtp.gmail.com',
+                    port: 587,
+                    secure: true,
+                    requireTLS: true,
+                    auth: {
+                        user: secret.auth.user,
+                        pass: secret.auth.pass
+                    }
+                });
+
+                var mailOptions = {
+                    to: req.body.email,
+                    from: 'RateMe ' + '<' + secret.auth.user + '>',
+                    subject: 'RateMe Application Password Reset Token',
+                    text: 'You have requested for password reset token. \n\n' +
+                            'Please click on the link to complete the process: \n\n' +
+                            'http://localhost/reset/' +rand+'\n\n' 
+                };
                 
+                smtpTransport.sendMail(mailOptions, (err, response) => {
+                    req.flash('info', 'A password reset token has been sent to ' + user.email);
+                    return callback(err, user);
+                });
             }
-        ])
-    })
+        ], (err) => {
+            if(err){
+                return next(err);
+            }
+            res.redirect('/forgot');
+        })
+    });
 }
 
 function validate(req, res, next){

@@ -2,14 +2,36 @@
 
 <section>
     <div class="container">
-     
-        <form method="POST" action="/login">
+        <form method="POST" action="/forgot">
             <div class="row justify-content-center pt-5">
                 <div class="col-12 col-md-8 col-lg-8 col-xl-6">
                     <div class="row">
                         <div class="col text-center">
                         <h1>Reset your password</h1>
                         <p class="text-h3">Enter your email and a password reset link will be sent. </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                             <% if(hasErrors){%>
+                                 <% for(var i = 0; i < messages.length; i++) {%>
+                                    <div class="alert alert-danger">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                                            x
+                                        </a>  
+                                        <%= messages[i] %>
+                                    </div>
+                                <% } %>
+                            <% } %>
+
+                            <% if(noErrors){%>
+                                <div class="alert alert-info">
+                                    <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                                        x
+                                    </a>  
+                                    <%= info %>
+                                </div>
+                            <% } %>
                         </div>
                     </div>
                     <div class="row align-items-center mt-4">
@@ -21,7 +43,7 @@
                     <div class="row justify-content-start mt-4">
                         <div class="col">
                             <div class="form-group">
-                                <input type="submit" id="submit" value="Send" class="btn btn-primary mt-4  btn-block" name="submit">
+                                <input type="submit" value="Send" class="btn btn-primary mt-4  btn-block" name="submit">
                             </div>
                         
                         </div>

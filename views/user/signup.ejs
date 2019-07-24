@@ -2,16 +2,6 @@
 
 <section>
     <div class="container">
-    <% if(hasErrors){%>
-                <% for(var i = 0; i < messages.length; i++) {%>
-                    <div class="alert alert-danger">
-                        <a href="#" class="close" data-dismiss="alert" aria-label="close">
-                            x
-                        </a>  
-                    <%= messages[i] %>
-                    </div>
-                <% } %>
-            <% } %>
         <form method="POST" class="" id="signupForm" action="/signup">
             <div class="row justify-content-center pt-5">
                 <div class="col-12 col-md-8 col-lg-8 col-xl-6">
@@ -19,6 +9,20 @@
                         <div class="col text-center">
                         <h1>Register</h1>
                         <p class="text-h3">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia. </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <% if(hasErrors){%>
+                                <% for(var i = 0; i < messages.length; i++) {%>
+                                    <div class="alert alert-danger">
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                                            x
+                                        </a>  
+                                    <%= messages[i] %>
+                                    </div>
+                                <% } %>
+                            <% } %>
                         </div>
                     </div>
                     <div class="row align-items-center">
