@@ -10,7 +10,12 @@ var secret = require('../secret/secret');
 module.exports = (app, passport) => {
 
     app.get('/', (req, res, next) => {
-           res.render('index', {title: 'Index || RateMe'});
+
+           if(req.session.cookie.originalMaxAge !== null){
+               res.redirect('/home');
+           }else{
+               res.render('index', {title: 'Index || RateMe'});
+           }
     });
 
     app.get('/signup', (req, res) => {
@@ -33,10 +38,17 @@ module.exports = (app, passport) => {
     });
 
     app.post('/login', loginValidation, passport.authenticate('local.login', {
-        successRedirect: '/home',
+        // successRedirect: '/home',
         failureRedirect: '/login',
         failureFlash: true
-    }));
+    }), (req, res) => {
+        if(req.body.rememberme){
+            req.session.cookie.maxAge = 30*24*60*60*1000; // 30 days
+        }else{
+            req.session.cookie.expires = null;
+        }
+        res.redirect('/home');
+    });
 
     app.get('/home', (req, res) => {
         res.render('home', {title: 'Home || RateMe'});
@@ -153,7 +165,7 @@ module.exports = (app, passport) => {
                                 var errors = req.flash('error');
                                 res.redirect('/reset/'+req.params.token);
                             }else{
-                                user.password = req.body.password;
+                                user.password = user.encryptPassword(req.body.password);
                                 user.passwordResetToken = undefined;
                                 user.passwordResetExpires = undefined;
 
@@ -204,6 +216,14 @@ module.exports = (app, passport) => {
                 });
             }
         ])
+    })
+
+    app.get('/logout', (req, res) => {
+        req.logout();
+
+        req.session.destroy((err) =>{
+            res.redirect('/')
+        })
     })
 }
 
