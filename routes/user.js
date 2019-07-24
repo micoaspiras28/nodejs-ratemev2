@@ -76,8 +76,8 @@ module.exports = (app, passport) => {
             //sending token to users email
             function(rand, user, callback){
                 var smtpTransport = nodemailer.createTransport({
-                    service: 'gmail', 
-                    host: 'smtp.gmail.com',
+                    service: 'yahoo', 
+                    host: 'smtp.mail.yahoo.com	',
                     port: 587,
                     secure: true,
                     requireTLS: true,
@@ -93,7 +93,7 @@ module.exports = (app, passport) => {
                     subject: 'RateMe Application Password Reset Token',
                     text: 'You have requested for password reset token. \n\n' +
                             'Please click on the link to complete the process: \n\n' +
-                            'http://localhost/reset/' +rand+'\n\n' 
+                            'http://localhost:3000/reset/' +rand+'\n\n' 
                 };
                 
                 smtpTransport.sendMail(mailOptions, (err, response) => {
@@ -108,7 +108,26 @@ module.exports = (app, passport) => {
             res.redirect('/forgot');
         })
     });
+
+    app.get('/reset/:token', (req, res) => {
+
+        User.findOne({passwordResetToken:req.params.token, passwordResetExpires: {
+            $gt: Date.now()}}, (err, user ) => {
+                if(!user){
+                    req.flash('error', 'Password reset token has expired or is invalid. Enter your email again to get new token.');
+                    return res.redirect('/forgot');
+                }
+                var errors = req.flash('error');
+
+                res.render('user/reset', {title: 'Reset Password || RateMe', messages: errors, 
+                hasErrors: errors.length > 0});
+
+        });
+    });
+
+   
 }
+
 
 function validate(req, res, next){
     req.checkBody('fullname', 'Fullname is Required').notEmpty();

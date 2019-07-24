@@ -1,0 +1,47 @@
+<% layout('layout') %>
+
+<section>
+    <div class="container">
+        <form method="POST" action="/forgot">
+            <div class="row justify-content-center pt-5">
+                <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+                    <div class="row">
+                        <div class="col text-center">
+                        <h1>Create new password</h1>
+                        <p class="text-h3">Enter your new password</p>
+                        </div>
+                    </div>
+                    
+                    <div class="row align-items-center mt-4">
+                        <div class="col">
+                            <input id="password" type="password" class="form-control" name="password" autocomplete="on" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="row align-items-center mt-4">
+                        <div class="col">
+                            <input id="cpassword" type="password" class="form-control" name="cpassword" autocomplete="on" placeholder="Confirm Password">
+                        </div>
+                    </div>
+                    
+                    <div class="row justify-content-start mt-4">
+                        <div class="col">
+                            <div class="form-group">
+                                <input type="submit" value="Reset Password" class="btn btn-primary mt-4  btn-block" name="reset">
+                            </div>
+                        
+                        </div>
+                    </div>
+                    
+                    <div class="row justify-content-start mt-4">
+                        <div class="col">
+                            <label class="form-check-label">
+                            Already reset password? <a href="/login">Login here.</a>
+                            </label>
+                          
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+  </section>
