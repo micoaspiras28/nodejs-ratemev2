@@ -25,6 +25,10 @@
   width: 15rem;
 }
 
+#sidebar-wrapper .list-group-item {
+  padding-left: 20px;
+}
+
 #page-content-wrapper {
   min-width: 100vw;
 }
@@ -48,7 +52,7 @@
   }
 }
 
-
+ /* Shared */
 .loginBtn {
   box-sizing: border-box;
   position: relative;
