@@ -7,15 +7,15 @@ $(document).ready(function(){
     });
 
     $('#upload-input').on('change', function(){
-        var uploadInput = $('#upload-input').val();
+        var uploadInput = $('#upload-input');
 
         if(uploadInput != undefined){
         //    var form = $('form')[0];// You need to use standard javascript object here
 
             var formData = new FormData();
             console.log(uploadInput[0]);
-            
-            formData.append('upload', uploadInput[0].files[0]).val();
+
+            formData.append('upload', uploadInput[0].files[0]);
 
             $.ajax({
                 url: '/upload',
@@ -24,7 +24,7 @@ $(document).ready(function(){
                 processData: false,
                 contentType: false,
                 success: function(data){
-                    $('#upload-input').val('');
+                    uploadInput.val('');
                 },
 
                 xhr: function(){
