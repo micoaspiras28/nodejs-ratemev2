@@ -58,8 +58,17 @@ module.exports = (app) => {
     app.get('/companies', (req, res) => {
         Company.find({}, (err, result) => {
             console.log(result);
-            
             res.render('company/companies', {title: 'All Companies || Rate Me', user: req.user, data: result})
         });
+    });
+
+    app.get('/company-profile/:id', (req, res) => {
+        res.render('company/company-profile', {title: 'Company Profile || Rate Me', user: req.user, id: req.params.id});
+    });
+
+    app.get('/company/register-employee/:id', (req, res) => {
+        Company.findOne({'_id':req.params.id }, (err, data) => {
+             res.render('company/register-employee', {title: 'Employee Registration || Rate Me', user: req.user, data: data});
+        })
     });
 }

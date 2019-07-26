@@ -1,0 +1,42 @@
+<% layout('landing-page') %>
+
+<div class="d-flex" id="wrapper">
+  <% include ../partials/landing-page/sidebar %>
+    <div id="page-content-wrapper">
+      <% include ../partials/landing-page/navbar %>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="ul-links">
+                <ul>
+                    <li><a href="/home">Home</a></li> |
+                        <li><a href="">Company</a></li>|
+                        <li><a href="">Register Company</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="body-div">
+                <h4>Register Employee</h4>
+                
+                <div class="form-group">
+                    <label for="">Company</label><br>
+                    <label for=""><%= data.name %></label>
+                </div>
+
+                <form action="" method="post">
+                    <div class="form-group">
+                        <label for="">Role</label>
+                        <input type="text" name="role" id="role" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="employeeRole" id="role" value="Register" class="btn btn-primary btn-block">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+   
