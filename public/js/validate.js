@@ -59,8 +59,8 @@ $(document).ready(function(){
                 city: city,
                 country: country,
                 sector: sector,
-                website: website
-                // img: img,
+                website: website,
+                img: img,
             };
 
             $.ajax({

@@ -15,6 +15,20 @@
             </div>
         </nav>
 
+        <div class="row">
+            <div class="col text-center">
+                <% if(noErrors){%>
+                    <div class="alert alert-success">
+                        <a href="#" class="close" data-dismiss="alert" aria-label="close">
+                            x
+                        </a>  
+                        <%= success %>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+                             
+
         <div class="container">
             <div class="body-div">
                 <h4>Register Company</h4>
