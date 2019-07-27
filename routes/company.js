@@ -130,5 +130,13 @@ module.exports = (app) => {
             data: data});
         })
        
-    })
+    });
+
+    app.get('/companies/leaderboard', (req, res) => {
+        Company.find({}, (err, result) => {
+            // console.log(result);
+            res.render('company/leaderboard', {title: 'All Companies || Rate Me', 
+            user: req.user, data: result});
+        }).sort({'ratingSum': -1});
+    });
 }

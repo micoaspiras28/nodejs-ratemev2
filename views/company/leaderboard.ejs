@@ -10,24 +10,18 @@
                 <ul>
                     <li><a href="/home">Home</a></li> |
                         <li><a href="">Company</a></li>|
-                        <li><a href="">Register Company</a></li>
+                        <li><a href="">Leaderboard</a></li>
                 </ul>
             </div>
         </nav>
         <div class="container-fluid">
             <div class="body-div">
-                <h4 class="title">Companies</h4>
-
-                <%  arrayAverage = (arr) => {
-                    return _.reduce(arr, (num1, num2) => {
-                        return num1 + num2;
-                    }, 0) / (arr.length === 0 ? 1 : arr.length);
-                } %>
-
+                <h4 class="title">Leaderboard</h4>
 
             <div class="row">
                 <% for(var i = 0; i < data.length; i++) {%>
-                    <% var total = arrayAverage(data[i].ratingNumber) %>
+
+                <% var index = _.indexOf(data, data[i]) %>
                 <div class="column">
                     <div class="card">
                         <a href="/company-profile/<%= data[i]._id %>">
@@ -35,11 +29,10 @@
                         <div class="card-body">
                             <h5 class="card-title"><%= data[i].name %></h5></a><hr>
                                 <span>
-                                    <i class="star" data-score="<%= total %>"></i>
-                                    (<%= data[i].ratingNumber.length %>)
+                                     <%= data[i].ratingSum %>  Total Stars
                                 </span><br>
-                                <i class="fa fa-building-o"></i> <%= data[i].sector %><br>
-                                <i class="fa fa-map-marker"></i> <%= data[i].city %> , <%= data[i].country %>
+                                <h5>#<%= index + 1 %></h5>
+                              
                         </div> 
                         <div class="card-footer">
                             <small class="text-muted">Last updated 3 mins ago</small>

@@ -10,6 +10,7 @@ var MongoStore = require('connect-mongo')(session);
 var passport = require('passport');
 var flash = require('connect-flash');
 var ejsLint = require('ejs-lint');
+var _ = require('underscore');
 
 
 
@@ -43,7 +44,7 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
-
+app.locals._ = _;
 
 require('./routes/user')(app, passport);
 require('./routes/company')(app);
