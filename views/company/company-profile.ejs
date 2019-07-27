@@ -28,7 +28,12 @@
                         
                         <a href="" class="btn btn-success btn-block">Rate this company</a><br>
                         <a href="" class="btn btn-info btn-block">View company employee</a><br>
-                        <a href="/company/register-employee/<%= id %>" class="btn btn-primary btn-block">Register me as an employee</a><br>
+
+                        <% if(user.company.name != data.name) { %>
+                            <a href="/company/register-employee/<%= id %>" class="btn btn-primary btn-block">Register me as an employee</a><br>
+                        <% } else { %>
+                            <h2>You are an employee</h2>
+                        <% } %>
 
                         <h3>Average Rating</h3>
                         <h5 class="star"></h5>

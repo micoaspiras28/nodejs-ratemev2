@@ -1,8 +1,10 @@
 var formidable = require('formidable');
 var path = require('path');
 var fs = require('fs');
+var async = require('async');
 
 var Company = require('../models/company');
+var User = require('../models/user');
 
 module.exports = (app) => {
     app.get('/company/create', (req, res) => {
@@ -57,18 +59,63 @@ module.exports = (app) => {
 
     app.get('/companies', (req, res) => {
         Company.find({}, (err, result) => {
-            console.log(result);
+            // console.log(result);
             res.render('company/companies', {title: 'All Companies || Rate Me', user: req.user, data: result})
         });
     });
 
     app.get('/company-profile/:id', (req, res) => {
-        res.render('company/company-profile', {title: 'Company Profile || Rate Me', user: req.user, id: req.params.id});
+        Company.findOne({'_id':req.params.id }, (err, data) => {
+            res.render('company/company-profile', {title: 'Company Profile || Rate Me', user: req.user, id: 
+        req.params.id, data:data});
+       });
     });
 
     app.get('/company/register-employee/:id', (req, res) => {
         Company.findOne({'_id':req.params.id }, (err, data) => {
              res.render('company/register-employee', {title: 'Employee Registration || Rate Me', user: req.user, data: data});
-        })
+        });
+    });
+
+    app.post('/company/register-employee/:id', (req, res, next) => {
+        async.parallel([
+            function(callback){
+                Company.update({
+                    '_id': req.params.id,
+                    'employee.employeeId': {$ne: req.user._id}
+                },
+                {
+                    $push: {employee: {employeeId: req.user._id,
+                        employeeFullname: req.user.fullname,
+                        employeeRole: req.body.role
+                    }}
+                }, (err, count) => {
+                    if(err){
+                        return next(err);
+                    }
+                    callback(err, count);
+                });
+            },
+            function(callback){
+                async.waterfall([
+                    function(callback){
+                        Company.findOne({'_id': req.params.id}, (err, data) => {
+                            callback(err, data);
+                        })
+                    },
+                    function(data, callback){
+                        User.findOne({'_id' :req.user._id}, (err, result) => {
+                            result.role = req.body.role;
+                            result.company.name = data.name;
+                            result.company.image = data.image;
+
+                            result.save((err) => {
+                                res.redirect('/home');
+                            })
+                        })
+                    }
+                ])
+            }
+        ])
     });
 }
