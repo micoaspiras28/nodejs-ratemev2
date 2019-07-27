@@ -17,27 +17,28 @@
 
         <div class="container-fluid">
             <div class="body-div">
-                <h4>Write Review</h4>
+                <h4 class="title">Write Review</h4>
 
                 <form action="" method="POST">
+                    <input type="hidden" name="id" id="id" value="<%= data.id %>" class="form-control">
                     <div class="form-group">
                         <label for="">Sending Company</label>
-                        <input type="text" name="sender" id="sender" class="form-control">
+                        <input type="text" name="sender" id="sender" value="<%= user.company.name %>" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="">Receiving Company</label>
-                        <input type="text" name="receiver" id="receiver" class="form-control">
+                        <input type="text" name="receiver" id="receiver" value="<%= data.name %>" class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label for="">Rating</label>
                         <div class="row">
                             <div class="col-sm-12" id="star_rating">
-                                <img id="" src="/images/star-off.svg" alt="1" title="Bad">
-                                <img id="" src="/images/star-off.svg" alt="2" title="Poor">
-                                <img id="" src="/images/star-off.svg" alt="3" title="Fair">
-                                <img id="" src="/images/star-off.svg" alt="4" title="Good">
-                                <img id="" src="/images/star-off.svg" alt="5" title="Excellent">
+                                <img id="1_star" src="/images/star-off.png" width="50px" height="50px" alt="1" title="Bad">
+                                <img id="2_star" src="/images/star-off.png" width="50px" height="50px" alt="2" title="Poor">
+                                <img id="3_star" src="/images/star-off.png" width="50px" height="50px" alt="3" title="Fair">
+                                <img id="4_star" src="/images/star-off.png" width="50px" height="50px" alt="4" title="Good">
+                                <img id="5_star" src="/images/star-off.png" width="50px" height="50px" alt="5" title="Excellent">
                                 <span id="showTitle"></span>
                             </div>
                         </div>
