@@ -5,6 +5,7 @@ var async = require('async');
 
 var Company = require('../models/company');
 var User = require('../models/user');
+var {arrayAverage} = require('../myFunctions');
 
 module.exports = (app) => {
     app.get('/company/create', (req, res) => {
@@ -66,8 +67,12 @@ module.exports = (app) => {
 
     app.get('/company-profile/:id', (req, res) => {
         Company.findOne({'_id':req.params.id }, (err, data) => {
+            var avg = arrayAverage(data.ratingNumber);
+
+            console.log(avg);
+            
             res.render('company/company-profile', {title: 'Company Profile || Rate Me', user: req.user, id: 
-        req.params.id, data:data});
+        req.params.id, data:data, average: avg});
        });
     });
 

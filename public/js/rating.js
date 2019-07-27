@@ -2,11 +2,11 @@ $(document).ready(function(){
     var clickedValue = 0;
 
     $('#1_star').hover(function(){
-        $('#1_star').attr('src', '/images/star-on.png');
-        $('#2_star').attr('src', '/images/star-off.png');
-        $('#3_star').attr('src', '/images/star-off.png');
-        $('#4_star').attr('src', '/images/star-off.png');
-        $('5_star').attr('src', '/images/star-off.png');
+        $('#1_star').attr('src', '/images/star_on.png');
+        $('#2_star').attr('src', '/images/star_off.png');
+        $('#3_star').attr('src', '/images/star_off.png');
+        $('#4_star').attr('src', '/images/star_off.png');
+        $('5_star').attr('src', '/images/star_off.png');
 
         $('#showTitle').html('Bad');
     });
@@ -18,11 +18,11 @@ $(document).ready(function(){
     });
 
     $('#2_star').hover(function(){
-        $('#1_star').attr('src', '/images/star-on.png');
-        $('#2_star').attr('src', '/images/star-on.png');
-        $('#3_star').attr('src', '/images/star-off.png');
-        $('#4_star').attr('src', '/images/star-off.png');
-        $('5_star').attr('src', '/images/star-off.png');
+        $('#1_star').attr('src', '/images/star_on.png');
+        $('#2_star').attr('src', '/images/star_on.png');
+        $('#3_star').attr('src', '/images/star_off.png');
+        $('#4_star').attr('src', '/images/star_off.png');
+        $('5_star').attr('src', '/images/star_off.png');
 
         $('#showTitle').html('Poor');
     });
@@ -34,11 +34,11 @@ $(document).ready(function(){
     });
 
     $('#3_star').hover(function(){
-        $('#1_star').attr('src', '/images/star-on.png');
-        $('#2_star').attr('src', '/images/star-on.png');
-        $('#3_star').attr('src', '/images/star-on.png');
-        $('#4_star').attr('src', '/images/star-off.png');
-        $('5_star').attr('src', '/images/star-off.png');
+        $('#1_star').attr('src', '/images/star_on.png');
+        $('#2_star').attr('src', '/images/star_on.png');
+        $('#3_star').attr('src', '/images/star_on.png');
+        $('#4_star').attr('src', '/images/star_off.png');
+        $('5_star').attr('src', '/images/star_off.png');
 
         $('#showTitle').html('Fair');
     });
@@ -50,11 +50,11 @@ $(document).ready(function(){
     });
 
     $('#4_star').hover(function(){
-        $('#1_star').attr('src', '/images/star-on.png');
-        $('#2_star').attr('src', '/images/star-on.png');
-        $('#3_star').attr('src', '/images/star-on.png');
-        $('#4_star').attr('src', '/images/star-on.png');
-        $('5_star').attr('src', '/images/star-off.png');
+        $('#1_star').attr('src', '/images/star_on.png');
+        $('#2_star').attr('src', '/images/star_on.png');
+        $('#3_star').attr('src', '/images/star_on.png');
+        $('#4_star').attr('src', '/images/star_on.png');
+        $('5_star').attr('src', '/images/star_off.png');
 
         $('#showTitle').html('Good');
     });
@@ -66,11 +66,11 @@ $(document).ready(function(){
     });
 
     $('#5_star').hover(function(){
-        $('#1_star').attr('src', '/images/star-on.png');
-        $('#2_star').attr('src', '/images/star-on.png');
-        $('#3_star').attr('src', '/images/star-on.png');
-        $('#4_star').attr('src', '/images/star-on.png');
-        $('5_star').attr('src', '/images/star-on.png');
+        $('#1_star').attr('src', '/images/star_on.png');
+        $('#2_star').attr('src', '/images/star_on.png');
+        $('#3_star').attr('src', '/images/star_on.png');
+        $('#4_star').attr('src', '/images/star_on.png');
+        $('5_star').attr('src', '/images/star_on.png');
 
         $('#showTitle').html('Excellent');
     });

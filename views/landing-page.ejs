@@ -8,5 +8,18 @@
 <% include  partials/landing-page/footer %>
 <%# <script src="/js/upload.js"></script>
 <script src="/js/validate.js"></script> %>
+
+<script>
+$(document).ready(function(){
+    $.fn.raty.defaults.path = '/images/';
+    $('.star').raty({
+        readOnly: true,
+        score: function(data){
+            return $(this).attr('data-score');
+        }
+    });
+});
+
+</script>
 </body>
 </html>
