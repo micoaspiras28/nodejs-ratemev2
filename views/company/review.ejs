@@ -1,0 +1,63 @@
+<% layout('landing-page') %>
+
+<div class="d-flex" id="wrapper">
+  <% include ../partials/landing-page/sidebar %>
+    <div id="page-content-wrapper">
+      <% include ../partials/landing-page/navbar %>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="ul-links">
+                <ul>
+                    <li><a href="/home">Home</a></li> |
+                        <li><a href="">Company</a></li>|
+                        <li><a href="">Register Company</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="body-div">
+                <h4>Write Review</h4>
+
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <label for="">Sending Company</label>
+                        <input type="text" name="sender" id="sender" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Receiving Company</label>
+                        <input type="text" name="receiver" id="receiver" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Rating</label>
+                        <div class="row">
+                            <div class="col-sm-12" id="star_rating">
+                                <img id="" src="/images/star-off.svg" alt="1" title="Bad">
+                                <img id="" src="/images/star-off.svg" alt="2" title="Poor">
+                                <img id="" src="/images/star-off.svg" alt="3" title="Fair">
+                                <img id="" src="/images/star-off.svg" alt="4" title="Good">
+                                <img id="" src="/images/star-off.svg" alt="5" title="Excellent">
+                                <span id="showTitle"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Review</label>
+                        <textarea name="review" id="review" cols="80" rows="8" class="form-control"></textarea>
+                    </div>
+
+                    
+                    
+                    <div class="form-group">
+                        <input type="submit" name="rate" id="rate" value="Create" class="btn btn-primary btn-block">
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
