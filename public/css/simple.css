@@ -385,3 +385,69 @@
 .star-half-png:before {
   content: "\f123";
 }
+
+/* REVIEW */
+
+.reviewDiv{
+  border: 3px solid #e7e7e7;
+  height: 130px;
+  width: 100%;
+  margin-bottom: 15px;
+overflow: scroll;
+}
+
+.reviewDiv .col-md-2 img{
+  text-align: center;
+}
+
+.reviewDiv .col-md-2{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 110px;
+}
+
+.reviewDiv .col-md-8{
+  height: 100%;
+}
+
+.reviewDiv .col-md-8 h1{
+  color: #73879C;
+  font-size: 16px;
+  font-weight: 100;
+  padding: 0;
+  margin: 10px 0px 5px 0px;
+  text-align: left;
+}
+
+.reviewDiv .col-md-8 h1 a{
+  color: #73879C;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 0;
+  margin: 10px 0px 5px 0px;
+}
+
+.reviewDiv .col-md-8 h2{
+  color: #73879C;
+  font-size: 15px;
+  font-weight: normal;
+  padding-bottom: 0;
+}
+
+.reviewDiv .col-md-8 p{
+  color: #73879C;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 0;
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+.reviewDiv .col-md-2 h1{
+  color: #73879C;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 13px;
+  
+}
