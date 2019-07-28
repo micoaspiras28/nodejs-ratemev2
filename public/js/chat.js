@@ -3,7 +3,7 @@ $(document).ready(function(){
 
     $('#message').click(function(){
         var message = $.trim($('#msg').val());
-        console.log(message);
+        // console.log(message);
         
         if(message != ''){
             $.post('/message/'+id, {
@@ -11,12 +11,11 @@ $(document).ready(function(){
                 id: id
             }, function(data){
                 $('#msg').val('');
-                console.log();
+                // console.log();
                 
             });
         }
-    })
-// REFRESH AUTOMATICALLY
+    });
     // setInterval(function(){
     //     $('.msg').load(location.href + '.msg');
     // }, 200);

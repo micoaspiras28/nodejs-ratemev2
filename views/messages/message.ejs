@@ -20,26 +20,27 @@
                 <h4 class="title">Send Message</h4>
 
                 <input type="text" name="receiverId" id="receiverId" class="form-control" value="<%= data._id %>"><br>
+                
 
-                <div class="msg">
-                    <strong class="primary-font">Mico Quint</strong>
-                    <img src="http://placehold.it/100x100" alt="Avatar">
-                    <p>Hello. How are you today?</p>
-                    <span class="time-right">11:00</span>
-                </div><br>
+                
+                <% chats.forEach(function(val) {%>
+                    <div class="msg">
+                        <strong class="primary-font"><%= val.userFromName %></strong>
+                        <img src="http://placehold.it/100x100" alt="Avatar">
+                        <p><%= val.body %></p>
+                        <span class="time-right"><%= moment(val.createdAt).format('LT') %></span>
+                    </div>
+                <% }) %>
 
-                    <div class="form-group">
-                        <textarea name="message" id="msg" cols="30" rows="5" placeholder="Enter message...." class="form-control"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="form-control btn btn-primary" name="send" id="message" value="Send Message">
-                    </div>
+                <div class="form-group">
+                    <textarea name="message" id="msg" cols="30" rows="5" placeholder="Enter message...." class="form-control"></textarea>
                 </div>
-
-
-
-
+                <div class="form-group">
+                    <input type="submit" class="form-control btn btn-primary" name="send" id="message" value="Send Message">
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<script src="/js/moment.js"></script>
