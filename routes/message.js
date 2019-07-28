@@ -5,7 +5,7 @@ var Message = require('../models/message');
 var async = require('async');
 
 module.exports = (app) => {
-    app.get('/message/:id', (req, res) => {
+    app.get('/message/:id', isLoggedIn, (req, res) => {
             
         async.parallel([
             function(callback){
@@ -49,4 +49,12 @@ module.exports = (app) => {
             });
         })
     });
+}
+
+function isLoggedIn( req, res, next){
+    if(req.isAuthenticated()){
+        next()
+    }else{
+        res.redirect('/')
+    }
 }

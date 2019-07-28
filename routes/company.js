@@ -8,7 +8,7 @@ var User = require('../models/user');
 var {arrayAverage} = require('../myFunctions');
 
 module.exports = (app) => {
-    app.get('/company/create', (req, res) => {
+    app.get('/company/create', isLoggedIn, (req, res) => {
         var success = req.flash('success');
         res.render('company/company', {title: 'Company Registration', user: req.user,
         success:success, noErrors: success.length > 0});
@@ -58,14 +58,14 @@ module.exports = (app) => {
         form.parse(req);
     });
 
-    app.get('/companies', (req, res) => {
+    app.get('/companies', isLoggedIn, (req, res) => {
         Company.find({}, (err, result) => {
             // console.log(result);
             res.render('company/companies', {title: 'All Companies || Rate Me', user: req.user, data: result})
         });
     });
 
-    app.get('/company-profile/:id', (req, res) => {
+    app.get('/company-profile/:id', isLoggedIn, (req, res) => {
         Company.findOne({'_id':req.params.id }, (err, data) => {
             var avg = arrayAverage(data.ratingNumber);
 
@@ -77,7 +77,7 @@ module.exports = (app) => {
        });
     });
 
-    app.get('/company/register-employee/:id', (req, res) => {
+    app.get('/company/register-employee/:id', isLoggedIn, (req, res) => {
         Company.findOne({'_id':req.params.id }, (err, data) => {
              res.render('company/register-employee', {title: 'Employee Registration || Rate Me', user: req.user, data: data});
         });
@@ -125,7 +125,7 @@ module.exports = (app) => {
         ])
     });
 
-    app.get('/:name/employees', (req, res) => {
+    app.get('/:name/employees', isLoggedIn, (req, res) => {
         Company.findOne({'name': req.params.name}, (err, data) => {
              res.render('company/employees', {title: 'Company Employees || Rate Me', user: req.user,
             data: data});
@@ -133,7 +133,7 @@ module.exports = (app) => {
        
     });
 
-    app.get('/companies/leaderboard', (req, res) => {
+    app.get('/companies/leaderboard', isLoggedIn, (req, res) => {
         Company.find({}, (err, result) => {
             // console.log(result);
             res.render('company/leaderboard', {title: 'All Companies || Rate Me', 
@@ -141,7 +141,7 @@ module.exports = (app) => {
         }).sort({'ratingSum': -1});
     });
 
-    app.get('/company/search', (req, res) => {
+    app.get('/company/search', isLoggedIn, (req, res) => {
         res.render('company/search', {title: 'Search Company || Rate Me', user: req.user});
     });
 
@@ -158,4 +158,12 @@ module.exports = (app) => {
     });
 
     
+}
+
+function isLoggedIn( req, res, next){
+    if(req.isAuthenticated()){
+        next()
+    }else{
+        res.redirect('/')
+    }
 }
