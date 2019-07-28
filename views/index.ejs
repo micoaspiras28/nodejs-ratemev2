@@ -1,34 +1,68 @@
 <% layout('layout') %>
 
+  <div class="d-flex" id="wrapper">
 
-<div class="d-flex" id="wrapper">
-   <!-- Page Content -->
-   <div id="page-content-wrapper">
-     <% include partials/nav %>
-     <div class="container">
-       <h1 class="mt-5">Learn and Understand NodeJS</h1>
-       <div class="row pt-5">
-         <div class="col-sm-2">
-           <h4>Description</h4>
-         </div>
-         <div class="col-sm-10"> <p>
-            NodeJS is a rapidy growing web server technology, and Node developers are among the highest paid in the industry. Knowing NodeJS well will get you a job or improve your current one by enabling you to build high quality, robust web applications.
-            <br><br>
-            In this course you will gain a deep understanding of Node, learn how NodeJS works under the hood, and how that knowledge helps you avoid common pitfalls and drastically improve your ability to debug problems.
-            <br><br>
-            NodeJS doesn't have to be hard to learn. The biggest mistake most coding tutorials make is expecting someone to learn simply by imitating others' code. Real world situations are never exactly like the tutorial.
-            <br><br>
-            I believe the best way to learn is to understand how a tool works and what it does for you, look at examples, and then try it yourself. That's how this course is built, with the goal to help you both learn and understand NodeJS.
-          </p>
+    <!-- Sidebar -->
+    <!-- Sidebar -->
+   <div class="bg-light border-right" id="sidebar-wrapper">
+     <div class="sidebar-heading text-center"><h3>RateMe</h3></div>
+
+      <div class="user-pic">
+          <img class="img-responsive img-rounded mx-auto d-block" style="width:100px;" src="/images/pic.svg"
+            alt="User picture">
+            <div class="profile-info text-center">
+              <p>Welcome,</p>
+              <p class="font-weight-bold">your are viewing as a guest</p>
+              <p class="">please login first</p>
+            </div>
+      </div>
+     <div class="list-group list-group-flush pt-3">
+       <div class="list-group list-group-flush">
+          <a href="/signup" class="list-group-item list-group-item-action bg-light"><i class="fa fa-home"></i> Register Here</a>
+          
         </div>
-       </div>
-      
-     </div>
-   </div>
-   <!-- /#page-content-wrapper -->
+    </div>
+</div>
+<!-- /#sidebar-wrapper -->
+    <!-- /#sidebar-wrapper -->
 
- </div>
- <!-- /#wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+      <% include partials/nav %>
+
+      <div class="container main-body">
+          <h1 class="mt-5" style="text-align: center !important;">Welcome to Rate Me</h1>
+          <!-- <p>How are you to do today?</p> -->
+            <!-- <div class="row pt-5">
+              <div class="col-sm-4 " id="colDes">
+                <div class="info-icon"><i class="fa fa-sign-in"></i></div>
+                  <h3>Add Company</h3>
+                  <p class="text-center"> Add company profile. Registered employee can give ratings and reviews. </p>
+                  <a href="#" class="btn btn-block btn-secondary link-btn">Add</a>
+              </div>
+                <div class="col-sm-4" id="colDes"> 
+                  <div class="info-icon"><i class="fa fa-search"></i></div>
+                    <h3>Search</h3>
+                    <p class="text-center"> Search through our catalogue and find your best partner. </p>
+                    <a href="" class="btn btn-block btn-secondary link-btn">Search</a>
+                </div>
+                <div class="col-sm-4" id="colDes">
+                  <div class="info-icon"><i class="fa fa-star"></i></div>
+                  <h3>Rate</h3>
+                  <p class="text-center"> Rate and review other companies and get your company reviewed as well </p>
+                  <a href="" class="btn btn-block btn-secondary link-btn">Rate</a>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+
+   
    
    
    

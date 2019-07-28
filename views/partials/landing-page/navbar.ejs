@@ -9,9 +9,12 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <span class="navbar-text mr-4">
+        <%= user.fullname %>
+      </span>
       <li class="nav-item">
-      <a class="nav-link" href="/logout">Logout</a>
-      </li>
+          <a href="/logout"><button class="btn btn-outline-danger my-2 my-sm-0" type="submit"> Logout</button></a>
+        </li>
     </ul>
   </div>
 </nav>
