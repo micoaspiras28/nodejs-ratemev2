@@ -73,6 +73,7 @@ module.exports = (app) => {
             
             res.render('company/company-profile', {title: 'Company Profile || Rate Me', user: req.user, id: 
         req.params.id, data:data, average: avg});
+        
        });
     });
 
@@ -85,7 +86,7 @@ module.exports = (app) => {
     app.post('/company/register-employee/:id', (req, res, next) => {
         async.parallel([
             function(callback){
-                Company.update({
+                Company.updateOne({
                     '_id': req.params.id,
                     'employee.employeeId': {$ne: req.user._id}
                 },
@@ -139,4 +140,22 @@ module.exports = (app) => {
             user: req.user, data: result});
         }).sort({'ratingSum': -1});
     });
+
+    app.get('/company/search', (req, res) => {
+        res.render('company/search', {title: 'Search Company || Rate Me', user: req.user});
+    });
+
+    app.post('/company/search', (req, res) => {
+        var name = req.body.search;
+        var regex = new RegExp(name, 'i');
+
+        Company.find({'$or': [{'name': regex}]}, (err, data) => {
+            if(err){
+                console.log(err);
+            }
+            res.redirect('/company-profile/'+data[0]._id);
+        });
+    });
+
+    
 }

@@ -20,7 +20,7 @@ module.exports = (app) => {
                 });
             },
             function(result, callback){
-                Company.update({
+                Company.updateOne({
                     '_id': req.params.id
                 },
                 {

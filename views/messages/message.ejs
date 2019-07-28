@@ -1,0 +1,45 @@
+<% layout('landing-page') %>
+
+<div class="d-flex" id="wrapper">
+  <% include ../partials/landing-page/sidebar %>
+    <div id="page-content-wrapper">
+      <% include ../partials/landing-page/navbar %>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="ul-links">
+                <ul>
+                    <li><a href="/home">Home</a></li> |
+                        <li><a href="">Company</a></li>|
+                        <li><a href="">Register Company</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="body-div">
+                <h4 class="title">Send Message</h4>
+
+                <input type="text" name="receiverId" id="receiverId" class="form-control" value="<%= data._id %>"><br>
+
+                <div class="msg">
+                    <strong class="primary-font">Mico Quint</strong>
+                    <img src="http://placehold.it/100x100" alt="Avatar">
+                    <p>Hello. How are you today?</p>
+                    <span class="time-right">11:00</span>
+                </div><br>
+
+                    <div class="form-group">
+                        <textarea name="message" id="msg" cols="30" rows="5" placeholder="Enter message...." class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="form-control btn btn-primary" name="send" id="message" value="Send Message">
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

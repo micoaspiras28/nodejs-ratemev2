@@ -1,0 +1,35 @@
+<% layout('landing-page') %>
+
+<div class="d-flex" id="wrapper">
+  <% include ../partials/landing-page/sidebar %>
+    <div id="page-content-wrapper">
+      <% include ../partials/landing-page/navbar %>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="ul-links">
+                <ul>
+                    <li><a href="/home">Home</a></li> |
+                        <li><a href="">Company</a></li>|
+                        <li><a href="">Leaderboard</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container-fluid">
+            <div class="body-div">
+                <h4 class="title">Search Company</h4>
+
+                <form action="" method="POST">
+                    <div class="form-group">
+                        <label for="">Search</label>
+                        <input type="text" name="search" id="search" class="form-control" placeholder="Type company name">
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" name="search" id="search" value="Search" class="btn btn-primary btn-block">
+                    </div>
+                </form>
+            </div>
+        </div>   
+    </div>
+</div>
+   
+   

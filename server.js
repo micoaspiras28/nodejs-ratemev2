@@ -49,6 +49,7 @@ app.locals._ = _;
 require('./routes/user')(app, passport);
 require('./routes/company')(app);
 require('./routes/review')(app);
+require('./routes/message')(app);
 
 app.listen(3000, function(){
   console.log('It is running on port 3000');
